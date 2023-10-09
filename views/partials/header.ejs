@@ -1,0 +1,78 @@
+
+<header class="w-full px-2 py-1 bg-[rgb(15,15,30)] fixed">
+  <div class="flex justify-between">
+    <div class="flex leading-8">
+      <a class="flex text-3xl" href="/">
+        <span>Express</span>
+        <span class="font-semibold">Server</span>
+        <small class="text-sm flex items-top pl-1">v.<%= app_version %></small>
+      </a>  
+    </div>
+    <div class="pl-12 pagesections w-full flex">
+      <% if(loggedin === true){%>
+        <div class="bg-slate-950 px-2 mx-2 leading-12 text-2xl flex items-center cursor-pointer hover:text-[red]">SubPage 1</div>
+        <div class="bg-slate-950 px-2 mx-2 leading-12 text-2xl flex items-center cursor-pointer hover:text-[red]">SubPage 1</div>
+      <%} %>
+    </div>
+
+    <% if(loggedin === true){%>
+      <div class="flex tems-center" onclick="showDropDown('dropdownUserMenu')">
+        <div class="flex items-center cursor-pointer">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <svg class="fill-[whitesmoke]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="1.5rem">
+              <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+            </svg>
+        </div>
+        <div class="hidden top-[40px] right-4 pt-4 absolute bg-[rgb(15,15,30)] px-2" id="dropdownUserMenu">
+          <div>
+            <form action="/auth/logout" method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="logout" value="loggingout">
+              <button type="submit" class="cursor-pointer hover:text-[red]">Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }else{ %>
+      <div class="text-right text-2xl mr-2">
+        <span class="cursor-pointer w-full text-right px-4" id="loginButton" onclick="showDropDown('dropdownLoginMenu')">Login</span>
+        <div class="hidden right-4 pt-4 absolute bg-[rgb(15,15,30)] px-2" id="dropdownLoginMenu">
+          <form action="/auth/login" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="mb-2">
+              <input class="px-2 text-lg rounded-sm text-slate-950" type="text" placeholder="Benutzer" name="username"> 
+            </div>
+            <div class="mb-3">
+              <input class="px-2 text-lg rounded-sm text-slate-950" type="password" placeholder="Passwort" name="password"> 
+            </div> 
+            <div class="grid grid-cols-2">
+              <div>
+                <input class="bg-slate-200 text-slate-950 w-full rounded cursor-pointer hover:bg-[white]" type="submit" value="Einloggen">
+              </div>
+              <div class="mb-2 cursor-pointer" onclick="showDropDown('dropdownLoginMenu')">
+                <span class="text-base">Schließen</span>
+              </div>
+            </div>
+                          
+          </form>
+        </div>
+      </div>
+    <% } %>
+  
+</div>
+<script>
+  function showDropDown(targetMenu){
+    const container = document.getElementById(targetMenu);
+    if(container.classList.contains("hidden")){
+      container.classList.remove("hidden");
+    }else{
+      container.classList.add("hidden");
+    }
+  }
+</script>
+</header>
+<div class="mt-[50px]"></div>
+<% if(typeof errorMessage !== "undefined" && errorMessage.length !== 0){ %>
+    <%- include('errorMsgContainer'), {errorMessage:'errorMessage'}; %>
+  <% } %>

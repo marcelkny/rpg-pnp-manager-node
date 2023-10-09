@@ -1,0 +1,17 @@
+<div class="bg-red-950 mb-2 pt-2 pb-2">
+    <% errorMessage.forEach((item)=>{ %>
+        <div class="bg-red-800 pt-2 pb-2 text-center">
+            <div class="text-3xl font-semibold">
+                <%= item.errorTitle %>
+            </div>
+            <div class="text-xl">
+                <%= item.errorMsg %>
+            </div>
+            <% if(errorMessage.length > 1){ %>
+                <div class="text-center">- - - - - - - - - -</div>
+            <% } %>
+        </div>
+        
+    <% }); %>
+    
+</div>

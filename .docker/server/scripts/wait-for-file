@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+    echo "Missing file to wait on!"
+    echo "Usage: $0 <file>"
+    exit 1;
+fi
+
+while [ ! -f "${1}" ]; do
+    echo "File ${1} does not exist, waiting for File"
+    sleep 2
+done

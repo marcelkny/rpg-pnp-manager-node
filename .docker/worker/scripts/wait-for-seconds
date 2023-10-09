@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+    echo "Missing seconds to wait on!"
+    echo "Usage: $0 <seconds>"
+    exit 1;
+fi
+
+sleep "${1}"

@@ -1,0 +1,49 @@
+/* khand-300 - latin-ext_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Khand';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./fonts/khand-v17-latin-ext_latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+         url('./fonts/khand-v17-latin-ext_latin-300.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* khand-regular - latin-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Khand';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/khand-v17-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+         url('./fonts/khand-v17-latin-ext_latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* khand-500 - latin-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Khand';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./fonts/khand-v17-latin-ext_latin-500.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+         url('./fonts/khand-v17-latin-ext_latin-500.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* khand-600 - latin-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Khand';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./fonts/khand-v17-latin-ext_latin-600.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+         url('./fonts/khand-v17-latin-ext_latin-600.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* khand-700 - latin-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Khand';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/khand-v17-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+         url('./fonts/khand-v17-latin-ext_latin-700.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }

@@ -1,0 +1,26 @@
+
+<footer class="px-2 py-2 bg-[rgb(15,15,30)]">
+  <div class="text-center">
+    <p class="is-size-5">© Copyright <span>2022</span><span class="has-text-success is-size-4 has-text-weight-bold"> MK'ay</span>
+    </p>
+  </div>
+</footer>
+
+<% if(pageNavId !== "login"){ %>
+<script type="text/javascript">
+  const page = <%- pageNavId %>["id"];
+
+  function pageHighlight() {
+    if(page != null){
+      let pageIdNavEl = document.getElementById(page);
+      if(pageIdNavEl != null){
+        pageIdNavEl.classList.add("is-active");
+      }
+    }
+  }
+  if(typeof page !== undefined && page !== null){
+    pageHighlight();
+  }  
+</script>
+<% } %>    
+  

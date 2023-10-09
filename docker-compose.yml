@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  ## (dev) server
+  ## - start dev server with: docker compose up dev-server
+  ## - stop with: docker compose down dev-server
+  dev-server:
+    build:
+      context: ./.docker/dev-server
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - postgres-pgadmin
+    volumes:
+      - ".:/app"
+    ports:
+      - "127.0.0.1:9000:8080"
+    networks:
+      - app-net
+    env_file:
+      - postgres.env
+  
+  ## bash for running commands
+  ## - no portmapping hence serve or watch-dev won't work
+  ## - run with: docker compose run --rm bash
+  bash:
+    image: node:18-bullseye
+    volumes:
+      - ".:/app"
+    command: /bin/bash
+    working_dir: /app
+
+  ## Database
+  postgres:
+    image: postgres:14.4-alpine
+    restart: always
+    env_file:
+      - postgres.env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-net 
+
+  postgres-pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "127.0.0.1:9001:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - app-net
+    env_file:
+      - postgres-pgadmin.env
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  pgadmin-data:

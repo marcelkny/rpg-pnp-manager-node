@@ -1,0 +1,39 @@
+.customBG_statusOk{
+    background-color: #15ab33;
+
+}
+.customBG_statusWarn{
+    background-color: #e3a928;
+
+}
+.customBG_statusError{
+    background-color: #d10300;
+
+}
+.customBG_statusUnseen{
+
+    color: #808080;
+}
+
+.customColor_statusOk{
+    color: #15ab33;
+
+}
+.customColor_statusWarn{
+    color: #e3a928;
+
+}
+.customColor_statusError{
+    color: #d10300;
+
+}
+.customColor_statusUnseen{
+    color: #808080;
+}
+.measurepointItem:nth-child(even) {
+    background: rgb(245, 245, 245);
+  }
+
+  svg{
+    display: inline;
+  }

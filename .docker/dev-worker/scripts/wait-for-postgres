@@ -1,0 +1,45 @@
+#!/bin/bash
+
+## save env variables DB_*
+DB_HOST_OV=${DB_HOST}
+DB_PORT_OV=${DB_PORT}
+DB_DB_OV=${POSTGRES_DB}
+DB_USER_OV=${POSTGRES_USER}
+DB_PASS_OV=${POSTGRES_PASSWORD}
+
+## default values for DB_*
+DB_HOST=postgres
+DB_PORT=5432
+DB_DATABASE=app
+DB_USERNAME=app
+DB_PASSWORD=
+
+APP_DOTENV_FILE=${APP_DOTENV:-/app/.env}
+
+## override DB_* with dotenv file if it exists
+if [ -f "${APP_DOTENV_FILE}" ]; then
+    export APP_DOTENV_FILE
+    source <(grep "^DB_[A-Z]\+=" ${APP_DOTENV_FILE})
+fi
+
+## override DB_* from dotenv with those from env
+if [ ! -z "${DB_HOST_OV}" ]; then
+    DB_HOST=${DB_HOST_OV}
+fi;
+if [ ! -z "${DB_PORT_OV}" ]; then
+    DB_PORT=${DB_PORT_OV}
+fi;
+if [ ! -z "${DB_DB_OV}" ]; then
+    DB_DATABASE=${DB_DB_OV}
+fi;
+if [ ! -z "${DB_USER_OV}" ]; then
+    DB_USERNAME=${DB_USER_OV}
+fi;
+if [ ! -z "${DB_PASS_OV}" ]; then
+    DB_PASSWORD=${DB_PASS_OV}
+fi;
+
+until PGPASSWORD="${DB_PASSWORD}" psql -U "${DB_USERNAME}" -h ${DB_HOST} -p ${DB_PORT} -c '\q' "${DB_DATABASE}" > /dev/null 2>&1; do
+    echo "DB not ready, waiting for DB"
+    sleep 2
+done

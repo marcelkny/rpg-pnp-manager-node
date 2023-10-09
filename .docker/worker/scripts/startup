@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd /app/
+
+## fix permission problems
+sudo chown -R node:node /app
+
+mkdir -p /app/storage/logs
+
+## remove sentinel if existend
+rm -rf /app/storage/.worker-sentinel
+
+## wait for DB
+wait-for-postgres
+
+npm run prod-migrate
+npm run prod-seed
+
+## wait another 10 seconds for the influxdb startup
+## TODO: should be replaced with a concrete query like mysql/postgres check
+wait-for-seconds 10
+
+## create web-server signal file for startup 
+touch /app/storage/.worker-sentinel
+
+npm run start-worker

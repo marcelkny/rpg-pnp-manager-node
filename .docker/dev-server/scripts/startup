@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## wait for db being reachable
+wait-for-postgres
+
+# Migration
+npm run migrate
+npm run seed
+
+
+## start server
+npm run start-dev

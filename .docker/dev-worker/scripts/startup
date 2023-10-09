@@ -1,0 +1,16 @@
+#!/bin/bash
+
+## wait for DB
+wait-for-postgres
+
+mkdir -p /app/storage/logs
+
+## run migrations
+npm run migrate
+npm run seed
+
+## create web-server signal file for startup 
+touch /app/.worker-sentinel
+
+## start worker
+npm run start-worker-dev

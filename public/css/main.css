@@ -1,0 +1,23 @@
+
+.pulsingline{
+    animation: Linepulse 1s linear infinite;
+}
+@keyframes Linepulse{
+    0%{
+
+        color: rgba(0, 0, 0, 0);
+    }
+    49%{
+        color: rgba(0, 0, 0, 0);
+    }
+    50%{
+
+        color: rgb(80, 192, 0);
+
+    }
+    100%{
+
+        color: rgb(80, 192, 0);
+
+    }
+}

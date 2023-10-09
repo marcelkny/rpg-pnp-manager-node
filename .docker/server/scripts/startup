@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd /app/
+
+## wait for db being reachable
+wait-for-postgres
+
+## wait few seconds for worker to start up and delete the sentinel file
+wait-for-seconds 5
+
+## wait for worker startup
+wait-for-file /app/storage/.worker-sentinel
+
+## startup
+npm run start
