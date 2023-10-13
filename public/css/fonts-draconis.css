@@ -1,0 +1,17 @@
+  /* khand-500 - latin-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Draconis';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./fonts/Draconis-JRw6B.ttf') format('woff2');
+  }
+    
+  /* khand-700 - latin-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Draconis';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/DraconisBold-qZxd6.ttf') format('woff2');
+  }

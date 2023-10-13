@@ -34,7 +34,7 @@ html {
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
      tab-size: 4; /* 3 */
-  font-family: Khand, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue; /* 4 */
+  font-family: Draconis, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue; /* 4 */
   font-feature-settings: normal; /* 5 */
   font-variation-settings: normal; /* 6 */
 }
@@ -111,7 +111,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: Khand, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue; /* 1 */
+  font-family: Draconis, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -509,18 +509,22 @@ video {
 .absolute {
   position: absolute;
 }
+.relative {
+  position: relative;
+}
 .right-4 {
   right: 1rem;
 }
 .top-\[40px\] {
   top: 40px;
 }
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -546,8 +550,27 @@ video {
 .hidden {
   display: none;
 }
+.h-\[160px\] {
+  height: 160px;
+}
+.h-\[200px\] {
+  height: 200px;
+}
+.h-\[50px\] {
+  height: 50px;
+}
 .h-screen {
   height: 100vh;
+}
+.w-\[160px\] {
+  width: 160px;
+}
+.w-\[200px\] {
+  width: 200px;
+}
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .w-full {
   width: 100%;
@@ -570,8 +593,14 @@ video {
 .items-center {
   align-items: center;
 }
+.justify-center {
+  justify-content: center;
+}
 .justify-between {
   justify-content: space-between;
+}
+.overflow-hidden {
+  overflow: hidden;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -590,6 +619,14 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(15 15 30 / var(--tw-bg-opacity));
 }
+.bg-green-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
 .bg-red-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
@@ -602,9 +639,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
-.bg-slate-900 {
+.bg-slate-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 .bg-slate-950 {
   --tw-bg-opacity: 1;
@@ -656,6 +693,9 @@ video {
 .text-right {
   text-align: right;
 }
+.align-middle {
+  vertical-align: middle;
+}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -668,6 +708,10 @@ video {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -675,10 +719,6 @@ video {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
-}
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 .text-xl {
   font-size: 1.25rem;
@@ -698,12 +738,14 @@ video {
   --tw-text-opacity: 1;
   color: rgb(2 6 23 / var(--tw-text-opacity));
 }
-* {
-    color: whitesmoke;
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+
 body {
     margin: 0;
-    font-family: "Khand", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    font-family: "Draconis", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif,  -apple-system, BlinkMacSystemFont;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -723,29 +765,10 @@ code {
   color: rgb(255 0 0 / var(--tw-text-opacity));
 }
 
-@media (min-width: 640px) {
-
-  .sm\:col-span-10 {
-    grid-column: span 10 / span 10;
-  }
-}
-
 @media (min-width: 768px) {
-
-  .md\:col-span-10 {
-    grid-column: span 10 / span 10;
-  }
 
   .md\:block {
     display: block;
-  }
-
-  .md\:grid {
-    display: grid;
-  }
-
-  .md\:grid-cols-12 {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
   .md\:pl-6 {
@@ -761,10 +784,6 @@ code {
 }
 
 @media (min-width: 1280px) {
-
-  .xl\:col-span-8 {
-    grid-column: span 8 / span 8;
-  }
 
   .xl\:pl-6 {
     padding-left: 1.5rem;

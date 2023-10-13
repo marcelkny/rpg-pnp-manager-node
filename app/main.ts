@@ -1,4 +1,5 @@
 import express from "express";
+import { Server } from 'socket.io';
 import session from "express-session";
 import { API_PORT, APP_COOKIE_HTTPONLY, APP_COOKIE_SECURE, APP_SESSION_KEY, APP_VERSION } from "./config/config";
 import { connectDatabase } from "./database/connection";
@@ -13,6 +14,7 @@ import morgan from "morgan";
 import morganMiddleware from "./middleware/morganMiddleware";
 import { storagePath } from "./utils/pathes";
 import { JSONResponse } from "./utils/http-request";
+import { createServer } from 'node:http';
 
 const app = express();
 
@@ -78,10 +80,19 @@ app.use(pageNotFoundHandler);
 app.use(logErrorHandler);
 app.use(reportErrorHandler);
 
+
+
 async function startUpServer() {
-    const server = app.listen(API_PORT, () => {
+    
+    const server =  createServer(app);
+    const io = new Server(server);
+    io.on('connection', (socket) => {
+        console.log('a user connected');
+      });
+    server.listen(API_PORT, () => {
         Logger.info(`app listening at http://localhost:${API_PORT}`);
     });
+    
     registerGracefulShutdownHandler(async () => {
         server.close(() => {
             Logger.info("Server terminated, cya!");
